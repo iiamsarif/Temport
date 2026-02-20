@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raizen Portfolio</title>
+<link rel="Icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg6976oCQ3egCcQXyYD3czcvN4sshyi9LpVw&s">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+    background:#000;
+    color:#fff;
+}
+
+/* ================= DYNAMIC GRADIENT BACKGROUND ================= */
+
+.bg-gradient{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    top:0;
+    left:0;
+    z-index:-2;
+    background:radial-gradient(circle at 50% 50%, #ff4d00, #d50063 60%);
+    transition:background-position 0.2s ease;
+}
+
+/* ================= PNG IMAGE ABOVE BG ================= */
+
+.hero-image{
+    position:absolute;
+    right:0;
+    bottom:0;
+    height:100%;
+    width:auto;
+    max-height:100vh;
+    object-fit:contain;
+    z-index:-1;
+}
+/* ================= CUSTOM CURSOR ================= */
+
+.cursor{
+    width:18px;
+    height:18px;
+    border:2px solid #c6ff00;
+    border-radius:50%;
+    position:fixed;
+    transform:translate(-50%, -50%);
+    pointer-events:none;
+    transition:all 0.08s ease-out;
+    z-index:9999;
+}
+
+.cursor-follower{
+    width:40px;
+    height:40px;
+    background:rgba(198,255,0,0.15);
+    border-radius:50%;
+    position:fixed;
+    transform:translate(-50%, -50%);
+    pointer-events:none;
+    transition:all 0.2s ease-out;
+    z-index:9998;
+}
+
+/* ================= NAVBAR ================= */
+
+/* Default (Hero Section) */
+header{
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+
+    background:transparent;
+    transition:all 0.4s ease;
+}
+
+/* When Scrolled */
+header.scrolled{
+    background:#ffffff;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* Text color change when white bg */
+header.scrolled .logo,
+header.scrolled nav ul li a{
+    color:#000;
+}
+
+/* Optional: change button style */
+header.scrolled .hire-btn{
+    background:#000;
+    color:#fff;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:600;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li a{
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.hire-btn{
+    background:#c6ff00;
+    color:#000;
+    padding:10px 22px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+    text-decoration:none;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:0 8%;
+    position:relative;
+}
+
+.hero-content{
+    max-width:600px;
+}
+
+.hero h5{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.hero h1{
+    font-size:110px;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:14px;
+    color:#ddd;
+    line-height:1.8;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1024px){
+    .hero h1{font-size:70px;}
+}
+
+@media(max-width:768px){
+
+    nav{display:none;}
+
+    .hero{
+        padding:0 5%;
+    }
+
+    .hero h1{font-size:48px;}
+    .hero h5{font-size:16px;}
+    .hero p{font-size:12px;}
+
+     .hero-image{
+        position:absolute;
+        right:50%;
+        transform:translateX(50%);
+        width:100%;
+        height:auto;
+        max-height:80vh;
+        object-fit:contain;
+        opacity:0.5;
+    }
+
+    .cursor,
+    .cursor-follower{
+        display:none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.resume-circle{
+    position:absolute; /* adjust if needed */
+    right:5%;
+    bottom:15%;
+
+    width:160px;
+    height:160px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.circle-svg{
+    position:absolute;
+    width:100%;
+    height:100%;
+    animation: rotate 10s linear infinite;
+}
+
+.circle-svg text{
+    fill:#ffffff;
+    font-weight:500;
+    text-transform:uppercase;
+}
+
+.resume-center{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:#d9ff00;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.resume-center img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+/* Rotation Animation */
+@keyframes rotate{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .resume-circle{
+        width:110px;
+        height:110px;
+    }
+
+    .resume-center{
+        width:70px;
+        height:70px;
+    }
+
+    .circle-svg text{
+        font-size:9px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ================= SECTION BASE ================= */
+
+.experience-section{
+    background:#f2f2f2;
+    padding:120px 8%;
+    position:relative;
+    overflow:hidden;
+    font-family: 'Georgia', serif;
+}
+
+/* ================= MOVING PROFESSIONAL TEXT ================= */
+
+.moving-headline{
+    width:100%;
+    overflow:hidden;
+    border-bottom:1px dashed #dcdcdc;
+    margin-bottom:80px;
+}
+
+.moving-track{
+    display:inline-block;
+    white-space:nowrap;
+    font-size:14px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#888;
+    animation:scrollText 25s linear infinite;
+}
+
+@keyframes scrollText{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+}
+
+/* ================= LAYOUT ================= */
+
+.experience-container{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:60px;
+}
+
+/* ================= LEFT SIDE ================= */
+
+.experience-left{
+    position:relative;
+}
+
+.exp-number{
+    font-size:200px;
+    font-weight:700;
+    color:#000;
+    line-height:1;
+}
+
+.exp-badge{
+    position:absolute;
+    top:40%;
+    left:-20px;
+    background:#d9ff00;
+    padding:8px 24px;
+    font-size:13px;
+    letter-spacing:1px;
+    transform:rotate(-25deg);
+    font-family:'Poppins', sans-serif;
+}
+
+/* ================= RIGHT SIDE ================= */
+
+.experience-right{
+    max-width:700px;
+}
+
+/* Client Row */
+
+.client-images{
+    display:flex;
+}
+
+.client-img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    overflow:hidden;
+    border:3px solid #fff;
+    margin-left:-15px;
+    background:#eee;
+}
+
+.client-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+.client-text h4{
+    font-size:28px;
+    font-weight:500;
+    color: #666;
+    font-family:'Poppins', sans-serif;
+}
+
+.client-text p{
+    font-size:16px;
+    color:#666;
+}
+
+/* Main Heading Professional Look */
+
+.main-heading{
+    font-size:56px;
+    font-weight:400;
+    line-height:1.4;
+    color:#111;
+}
+
+.main-heading span{
+    display:block;
+    font-weight:600;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1024px){
+
+    .exp-number{
+        font-size:140px;
+    }
+
+    .main-heading{
+        font-size:40px;
+    }
+}
+
+@media(max-width:768px){
+
+    .experience-container{
+        flex-direction:column;
+    }
+
+    .exp-number{
+        font-size:100px;
+    }
+
+    .exp-badge{
+        font-size:10px;
+        width: 150px;
+        padding:6px 7px;
+    }
+
+    .client-img{
+        width:45px;
+        height:45px;
+    }
+
+    .main-heading{
+        font-size:28px;
+    }
+
+    .moving-track{
+        font-size:11px;
+        letter-spacing:2px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hide desktop toggle */
+.menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    width:25px;
+    height:2px;
+    background:#fff;
+    transition:0.4s;
+}
+
+/* Mobile Menu Fullscreen */
+.mobile-menu{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:100%;
+    height:100vh;
+    background:linear-gradient(135deg,#000814,#001d3d);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:0.5s ease;
+    z-index:999;
+}
+
+.mobile-menu ul{
+    list-style:none;
+    text-align:center;
+}
+
+.mobile-menu ul li{
+    margin:25px 0;
+}
+
+.mobile-menu ul li a{
+    text-decoration:none;
+    color:#fff;
+    font-size:26px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.mobile-menu ul li a:hover{
+    color:#c6ff00;
+}
+
+/* Active State */
+.mobile-menu.active{
+    right:0;
+}
+
+/* Animate Hamburger to X */
+.menu-toggle.active span:nth-child(1){
+    transform:rotate(45deg) translate(5px,5px);
+}
+
+.menu-toggle.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+    transform:rotate(-45deg) translate(5px,-5px);
+}
+
+/* Mobile Only */
+@media(max-width:768px){
+
+    nav,
+    .hire-btn{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+}
+
+
+.mobile-menu ul li a{
+    position:relative;
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    padding-bottom:4px;
+    transition:0.3s;
+}
+
+.mobile-menu ul li a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0%;
+    height:1px;
+    background:#c6ff00;
+    transition:0.4s ease;
+}
+
+.mobile-menu ul li a:hover::after{
+    width:100%;
+}
+header.scrolled nav ul li a{
+    color:#000;
+}
+
+header.scrolled nav ul li a::after{
+    background:#000;
+}
+
+
+
+header.scrolled .menu-toggle span{
+    background:#000;
+}
+
+
+
+
+
+
+
+/* Background Section */
+.cv-section{
+    position:relative;
+    width:100%;
+    height:500px; /* adjust as needed */
+    background:url("https://template.bugfinder.app/raizen/assets/images/about/aboutThumb1_1.png") no-repeat center center/cover;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+/* Badge wrapper positioned inside background */
+.cv-badge-wrapper{
+    position:absolute;
+    top:100px;
+    left:100px;
+}
+
+/* White Circular Badge */
+.cv-badge{
+    position:relative;
+    width:220px;
+    height:220px;
+    background:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+    cursor:pointer;
+    transition:0.4s ease;
+}
+
+/* Rotating Text */
+.cv-rotate-text{
+    position:absolute;
+    width:100%;
+    height:100%;
+    animation:cvRotate 12s linear infinite;
+}
+
+.cv-rotate-text text{
+    fill:#333;
+    font-weight:500;
+    text-transform:uppercase;
+}
+
+/* Center Image */
+.cv-badge-center{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#c6ff00;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.cv-badge-center img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+/* Rotation Animation */
+@keyframes cvRotate{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+}
+
+.cv-badge:hover{
+    transform:scale(1.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SECTION */
+.service-section{
+    padding:100px 5%;
+    background:#0e0e0e;
+    color:#fff;
+    text-align:center;
+    overflow:hidden;
+}
+
+/* HEADER */
+.service-header h2{
+    font-size:42px;
+    font-weight:500;
+    line-height:1.3;
+    margin:20px 0 60px;
+}
+
+.service-tag{
+    display:inline-block;
+    padding:6px 18px;
+    border:1px solid #555;
+    border-radius:30px;
+    font-size:14px;
+}
+
+/* SLIDER */
+/* SLIDER CONTAINER */
+.product-slider{
+    position:relative;
+    max-width:1100px;
+    margin:auto;
+    overflow:hidden;
+}
+
+/* TRACK */
+.slider-track{
+    display:flex;
+    align-items:center;
+    transition:0.6s ease;
+}
+
+/* SLIDES */
+.slide{
+    flex:0 0 60%;      /* center slide size */
+    margin:0 20px;
+    opacity:0.4;
+    transform:scale(0.85);
+    transition:0.6s ease;
+}
+
+.slide.active{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* IMAGES */
+.slide img{
+    width:100%;
+    display:block;
+    border-radius:20px;
+}
+
+/* BUTTONS */
+.slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:14px;
+    cursor:pointer;
+    letter-spacing:2px;
+    z-index:10;
+}
+
+.prev-btn{
+    left:0;
+}
+
+.next-btn{
+    right:0;
+}
+/* DOTS */
+.slider-dots{
+    margin-top:30px;
+}
+
+.dot{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    background:#555;
+    border-radius:50%;
+    margin:0 6px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.dot.active{
+    background:#c6ff00;
+}
+
+
+
+
+
+
+
+@media(max-width:768px){
+
+    .service-header h2{
+        font-size:28px;
+    }
+
+    .prev-btn{
+        left:10px;
+    }
+
+    .next-btn{
+        right:10px;
+    }
+
+    .slide{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SECTION BACKGROUND */
+.about-stats-section {
+    position: relative;
+    padding: 120px 5%;
+   background-color: white;
+    overflow: hidden;
+}
+
+/* FLEX WRAPPER */
+.about-stats-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LEFT & RIGHT */
+.about-stats-left,
+.about-stats-right {
+    width: 30%;
+}
+
+/* TEXT STYLE (BLACK) */
+.about-stats-section h2 {
+    font-size: 60px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.about-stats-section p {
+    font-size: 18px;
+    margin: 3px 0;
+    color: #000;
+}
+
+/* SPACE BETWEEN ITEMS */
+.stat-item {
+    margin-bottom: 80px;
+}
+
+/* CENTER IMAGE FRAME */
+.about-image-frame {
+    position: relative;
+    width: 420px;
+    height: 520px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    z-index: 2;
+}
+
+/* OUTER BIG CIRCLE */
+.about-image-frame::before {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.08);
+    top: -10%;
+    left: -10%;
+    z-index: -1;
+}
+
+/* SECOND LIGHTER CIRCLE */
+.about-image-frame::after {
+    content: "";
+    position: absolute;
+    width: 135%;
+    height: 135%;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.05);
+    top: -17.5%;
+    left: -17.5%;
+    z-index: -2;
+}
+
+/* IMAGE PERFECT FIT */
+.about-parallax-img {
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    object-fit: cover;
+}
+
+
+
+@media (max-width: 992px) {
+
+    .about-stats-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-stats-left,
+    .about-stats-right {
+        width: 100%;
+    }
+
+    .stat-item {
+        margin-bottom: 40px;
+    }
+
+    .about-image-frame {
+        width: 280px;
+        height: 380px;
+        margin: 40px 0;
+    }
+
+    .about-stats-section h2 {
+        font-size: 40px;
+    }
+
+    .about-stats-section p {
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+.skills-drag-section {
+    background: #d8ff00;
+    padding: 80px 5%;
+    position: relative;
+    overflow: hidden;   /* IMPORTANT */
+}
+
+.skills-drag-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    overflow: hidden;   /* IMPORTANT */
+}
+/* Base Card */
+.drag-skill {
+    position: absolute;
+    width: 18vw;
+    max-width: 220px;
+    min-width: 160px;
+    height: 32vw;
+    max-height: 380px;
+    min-height: 280px;
+    border-radius: 120px;
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+.drag-skill.dark {
+    background: #000;
+    color: #fff;
+}
+
+.drag-skill.light {
+    background: #eaeaea;
+    color: #000;
+}
+
+/* Icon */
+.drag-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;          /* IMPORTANT */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;          /* optional */
+}
+
+.drag-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;         /* keeps image proper */
+    border-radius: 50%;        /* makes image fully round */
+}
+.drag-skill h3 {
+    font-size: 2rem;
+}
+
+/* Horizontal Card */
+.drag-skill.horizontal {
+    width: 30vw;
+    max-width: 380px;
+    height: 12vw;
+    max-height: 200px;
+    flex-direction: row;
+    padding: 0 40px;
+}
+
+.drag-skill.horizontal h3 {
+    transform: rotate(-90deg);
+}
+
+
+
+
+
+.testimonial-section {
+    background: #000;
+    padding: 80px 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.testimonial-container {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.testimonial-title {
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 60px;
+    font-weight: 600;
+}
+
+.testimonial-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.testimonial-track {
+    display: flex;
+    width: calc(350px * 6);
+    animation: scroll 20s linear infinite;
+}
+
+.testimonial-item {
+    width: 350px;
+    margin: 0 20px;
+    background: #111;
+    padding: 30px;
+    border-radius: 15px;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: 0.3s ease;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-10px);
+}
+
+.testimonial-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.testimonial-item p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+.testimonial-item h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.testimonial-item span {
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Auto Move Animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .testimonial-title {
+        font-size: 28px;
+    }
+
+    .testimonial-item {
+        width: 280px;
+        padding: 20px;
+    }
+
+    .testimonial-track {
+        width: calc(280px * 6);
+    }
+}
+
+.skills-drag-section {
+    z-index: 1;
+}
+
+.drag-skill {
+    z-index: 2;
+}
+.skills-title {
+    text-align: center;
+    font-size: 4vw;          /* responsive size */
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 60px;
+    letter-spacing: 3px;
+}
+
+/* Better control on large screens */
+@media (min-width: 1200px) {
+    .skills-title {
+        font-size: 60px;
+    }
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+    .skills-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== SECTION WRAPPER ===== */
+
+.social-section {
+    width: 100%;
+    padding: 80px 5%;
+    background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
+}
+
+/* ===== CONTAINER ===== */
+
+.social-container {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    align-items: start;
+}
+
+/* ===== CARD ===== */
+
+.social-card {
+    text-align: center;
+}
+
+/* ===== HEADER ===== */
+
+.social-header h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.social-header p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+/* ===== IMAGE WRAPPER ===== */
+
+.image-wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+/* ===== IMAGE ===== */
+
+.image-wrapper img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+/* ===== JUMP ANIMATION ===== */
+
+.image-wrapper img:hover {
+    transform: translateY(-20px) scale(1.03);
+    box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 992px) {
+    .image-wrapper img {
+        height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .social-header h2 {
+        font-size: 24px;
+    }
+
+    .image-wrapper img {
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-section {
+        padding: 60px 20px;
+    }
+
+    .image-wrapper img {
+        height: 300px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* ===== MAIN SECTION ===== */
+
+.talk-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, #1a1a1a 0%, #000 60%);
+    overflow: hidden;
+    padding: 80px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Diagonal texture effect */
+.talk-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        135deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 2px,
+        transparent 2px,
+        transparent 20px
+    );
+    pointer-events: none;
+}
+
+/* ===== CONTAINER ===== */
+
+.talk-container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    z-index: 2;
+}
+
+/* ===== LEFT CIRCLE ===== */
+
+.left-circle {
+    width: 280px;
+    height: 280px;
+    background: linear-gradient(180deg, #2b2b2b, #000);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 80px rgba(0,0,0,0.8);
+    transition: transform 0.4s ease;
+}
+
+.left-circle:hover {
+    transform: scale(1.05);
+}
+
+.circle-content {
+    text-align: left;
+    color: #ccc;
+}
+
+.small-text {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.circle-content h3 {
+    font-size: 22px;
+    color: #fff;
+}
+
+.circle-content span {
+    color: #d6ff00;
+}
+
+/* ===== CENTER TITLE ===== */
+
+.center-content {
+    text-align: center;
+    flex: 1;
+}
+
+.center-content h1 {
+    font-size: 60px;
+    font-weight: 300;
+    color: #ddd;
+}
+
+.center-content h1 span {
+    color: #d6ff00;
+}
+
+.lines {
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #d6ff00, transparent);
+    margin: 20px auto;
+    opacity: 0.5;
+}
+
+/* ===== RIGHT FRAME ===== */
+
+.right-frame {
+    width: 260px;
+    height: 420px;
+    border-radius: 140px;
+    background: #d6ff00;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(214,255,0,0.4);
+    animation: floatFrame 4s ease-in-out infinite;
+}
+
+.frame-inner {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 130px;
+}
+
+/* Floating animation */
+@keyframes floatFrame {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ===== BIG BACKGROUND TEXT ===== */
+
+.big-text {
+    position: absolute;
+    bottom: -20px;
+    left: 5%;
+    font-size: 180px;
+    font-weight: 700;
+    color: rgba(248, 248, 248, 0.404);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.big-text span {
+    font-size: 40px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1200px) {
+    .center-content h1 {
+        font-size: 45px;
+    }
+
+    .big-text {
+        font-size: 120px;
+    }
+}
+
+@media (max-width: 992px) {
+    .talk-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .left-circle {
+        order: 1;
+    }
+
+    .center-content {
+        order: 2;
+    }
+
+    .right-frame {
+        order: 3;
+    }
+
+    .big-text {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .center-content h1 {
+        font-size: 32px;
+    }
+
+    .left-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    .right-frame {
+        width: 200px;
+        height: 330px;
+    }
+}
+
+
+.frame-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 130px; /* must match inner radius */
+}
+</style>
+</head>
+<body>
+<div>
+<div class="bg-gradient"></div>
+
+<img src="https://template.bugfinder.app/raizen/assets/images/intro/introthumb1_1.png" class="hero-image">
+
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<header>
+    <div class="logo">Raizen™</div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Pages</a></li>
+            <li><a href="#">Blogs</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="hire-btn">LET’S HIRE ME ↗</a>
+
+
+    <div class="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+</header>
+
+
+<div class="mobile-menu">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Pages</a></li>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</div>
+
+
+
+
+<section class="hero">
+    <div class="hero-content">
+        <h5>Hey, I’m</h5>
+        <h1>Raizen</h1>
+        <p>
+            I’m a product designer focused on creating intuitive, user-first digital experiences.
+            My work blends strategy with simplicity to turn complex ideas into elegant solutions.
+            Every pixel is designed with purpose and intention.
+        </p>
+    </div>
+</section>
+
+<div class="resume-circle">
+    
+    <svg viewBox="0 0 200 200" class="circle-svg">
+        <defs>
+            <path id="circlePath"
+                d="M 100,100
+                   m -75,0
+                   a 75,75 0 1,1 150,0
+                   a 75,75 0 1,1 -150,0" />
+        </defs>
+
+        <text font-size="14" letter-spacing="2">
+            <textPath xlink:href="#circlePath">
+                DOWNLOAD MY RESUME • DOWNLOAD MY RESUME •
+            </textPath>
+        </text>
+    </svg>
+
+    <div class="resume-center">
+        <img src="https://template.bugfinder.app/raizen/assets/images/intro/introthumb1_1.png" alt="">
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="experience-section">
+
+    <!-- Moving Professional Text -->
+    <div class="moving-headline">
+        <div class="moving-track">
+            Mobile Applications • Product Design • Development • User Research • Strategy • Interface Systems • 
+            Mobile Applications • Product Design • Development • User Research • Strategy • Interface Systems •
+        </div>
+    </div>
+
+    <div class="experience-container">
+
+        <!-- Left Big Number -->
+        <div class="experience-left">
+            <h1 class="exp-number">13</h1>
+            <div class="exp-badge">Years of Experience</div>
+        </div>
+
+        <!-- Right Content -->
+        <div class="experience-right">
+
+         <div class="client-row">
+    <div class="client-images">
+        <div class="client-img">
+            <img src="https://template.bugfinder.app/raizen/assets/images/about/aboutVector1_1.png" alt="Client 1">
+        </div>
+        <div class="client-img">
+            <img src="https://template.bugfinder.app/raizen/assets/images/about/aboutVector1_2.png" alt="Client 2">
+        </div>
+        <div class="client-img">
+            <img src="https://template.bugfinder.app/raizen/assets/images/about/aboutVector1_3.png" alt="Client 3">
+        </div>
+        <div class="client-img">
+            <img src="https://template.bugfinder.app/raizen/assets/images/about/aboutVector1_4.png" alt="Client 4">
+        </div>
+    </div>
+</div>
+
+            <h2 class="main-heading">
+                Crafting Digital Experiences that are
+                <span>Simple, Smart, and Human.</span>
+            </h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+<div class="cv-section">
+
+    <div class="cv-badge-wrapper">
+        <div class="cv-badge">
+            
+            <svg viewBox="0 0 200 200" class="cv-rotate-text">
+                <defs>
+                    <path id="cvCirclePath"
+                        d="M 100,100
+                           m -75,0
+                           a 75,75 0 1,1 150,0
+                           a 75,75 0 1,1 -150,0" />
+                </defs>
+
+                <text font-size="14" letter-spacing="2">
+                    <textPath xlink:href="#cvCirclePath">
+                        DOWNLOAD MY RESUME • DOWNLOAD MY RESUME •
+                    </textPath>
+                </text>
+            </svg>
+
+            <div class="cv-badge-center">
+                <img src="https://template.bugfinder.app/raizen/assets/images/intro/introthumb1_1.png" alt="">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="service-section">
+
+    <div class="service-header">
+        <span class="service-tag">• Service</span>
+        <h2>
+            Design Services Tailored For <br>
+            Modern Brands
+        </h2>
+    </div>
+
+    <div class="product-slider">
+
+        <button class="slider-btn prev-btn">PREV</button>
+
+        <div class="slider-track">
+
+            <div class="slide active">
+                <img src="https://template.bugfinder.app/raizen/assets/images/service/serviceThumb1_2.png" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="https://template.bugfinder.app/raizen/assets/images/service/serviceThumb1_1.png" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="https://template.bugfinder.app/raizen/assets/images/service/serviceThumb1_1.png" alt="">
+            </div>
+
+        </div>
+
+        <button class="slider-btn next-btn">NEXT</button>
+
+    </div>
+
+    <div class="slider-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="about-stats-section">
+
+    <div class="about-stats-wrapper">
+
+        <!-- LEFT CONTENT -->
+        <div class="about-stats-left">
+            <div class="stat-item">
+                <h2>2018</h2>
+                <p>Years of Establishment</p>
+                <p>More than 07 Years in field</p>
+            </div>
+
+            <div class="stat-item">
+                <h2>750+</h2>
+                <p>Clients are satisfied</p>
+                <p>These People love me</p>
+            </div>
+        </div>
+
+        <!-- CENTER IMAGE FRAME -->
+       <!-- CENTER IMAGE FRAME -->
+<div class="about-image-frame">
+    <img src="https://template.bugfinder.app/raizen/assets/images/intro/introthumb1_1.png" 
+         alt="Profile Image" 
+         class="about-parallax-img">
+</div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="about-stats-right">
+            <div class="stat-item">
+                <h2>299</h2>
+                <p>Projects are launched</p>
+                <p>A lot of projects are done</p>
+            </div>
+
+            <div class="stat-item">
+                <h2>16+</h2>
+                <p>Projects in work</p>
+                <p>What I do right now</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<section class="skills-drag-section">
+   <h2 class="skills-title">MY ADVANTAGE</h2>
+    <div class="skills-drag-container" id="dragArea">
+
+        <div class="drag-skill dark" data-x="10" data-y="10">
+            <div class="drag-icon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAACUCAMAAABV5TcGAAABLFBMVEX///+HT///Nzf/cjcAtv8ky3Hx8fHq6ur/RTf/Li7/3d3/5d2gef8TyWth1ZD/XV3/bS7/ajeNQf//iF35ODuqSdVal7yCRv/r5P8Asf8Y0mPg9ej/39WJSv93ZP8Auf8wp/8Axl7/8/D/6ur/wcH/bm7/FBT/JCT/YxP/j2f/AAD/RER9O//r+P/g8//59//M7P+X2f/I79Zx2Zvx+/WA26T/qan/hob/Zl3/gF3/pIb/van/z8H/PS7/mXf/ZWX/n5//kZH/rpP/WQD/0ND/fUn1bzvt7f/Kuv+7feeuVdm8b9XwytXm2dXb0NWyv9WMsdV2qdWr4//h1f++pv+XZf93Lv9RyP+6m//WyP/Osv+70/+phv+Kv/9gsv+NWv+PuM5I0ICu58OY4rSs9oNKAAAEMklEQVR4nO3Z61cSQRjHcXAxM12zsmTDIkQDEwUWwdLK7Gp3hQApuwD////Qriu4t2fshMuc88zv84I3vJnzPTOzs7OxK+ASAwAAAAAAAAAAAAAAAAAOlrPX/GYClmWPcjyyK7Xt1es+j5/c8lnb2X3Kv0i2tjrxMJeb9nl2Yz4grz3fZR5kZW86Nz0RdPWGFmQlWXsqe8RRejER1oLKYRfRdmWPOTr7D8Nj0Dk0Lf9S9qijsv+IqiHIob1i2mOFriHKob1iuX8s5+gawhxanuPzZf+/c8wzXC7ZBUENcQ5N4zc9asQj9l9yzPN72q6OkmNN9ugvW/b6KDlucVstr9dHyfFmSfb4L9nKuqjGRVvpG25Hj9FyvEUO1jmwd3jgyeK1h3OH2/4oOfi9tGRFNS7aSmdkj/7yCU/p4jfa57LHHoEseTN4UQ6W9x2xmqCHKEee3/vsqW26hyBHfkf2uCOSpXsIbtJ3WC4VG92DzMG4hqWWCw9C5Mhz3TcGrAkSdoUc/lEy/5Lz1HAs1/YW1hd81j053p5a4/7B+lTxXfLg/YfbXh8/LQ18/vL18Ojo6LC+uSF7qNErNr41W4XFuNfibPLs/1K9nUgk0ul0wjDS5ZLUsUYveRwv3IsHDHJslNOGkRiwg2xKHnCkOs3FkBjDHJvt8xZnRdqMJ8hB3L9KPDlKaX8Nq0eabY9O2Do5z7ERaOFg2uNdi4jh5KBqJAzZA49GnJobTo42maMte+RR+F4ga9g56lQNqwfH5fKbrmHnCDxUXBhOjwN6qdg5fpBrheduekI8Y89y/EyLcpRlj/6yFZui2XFv9peoBr/V0hDnuP9AODva3N7mOr9HycHuaNoRnDpUzIHZ4YYcHklspR6z4nOHYg/a2LH4VKrYMSzWGOWQzvCKULSX2q9wSq0Va3qIX/BL9Gox2G2kthO6h339U6be8A1+O4et2CQfLqd3pcSNB8/LsJh99qDmh3N1HNrD4HfmGGjMEj2cDwthPYw2w6fKQPJ4MXTBnH122igb3iBGosx2btiKnWYrZIYMv9GW2p6Pkpy/wTmKjZNWq3DTqzD8ZB0rla0MDv4xHFN/7vgcTrn/L9Xr9RLrVTK0ZVYymbt+3ZTscUmx1etm9MkAfU7JHKmKHhJD1RzmXCYshqI5Ut3QqaFqDrKGkjkqZA0Vc5jEvqFoji5dQ8EcJr1UVMxRRQ63OeRwoc8cSuYwRTupgjlENdTL0UMONywWjwu20uqW7AGO15Y4R1/2+MatItw8erKHN26ivVRX8KpUNDmqsgc3fj36BV/BySF4w9cVnBzWw4W6N+7KHpkcZuhXBX1S9rhk6U0Geyh3IHUx/bceul5R7DzqkepPuj5K6vpcT+UaFrPfzWR0i/Vb6am7UIZSKbNfrVb7ZkrxmQEAAAAAAAAAAAAAAABsTYHLX0Npt0sj2iHIAAAAAElFTkSuQmCC" alt="">
+            </div>
+            <h3>99%</h3>
+        </div>
+
+        <div class="drag-skill light" data-x="40" data-y="20">
+            <div class="drag-icon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACUCAMAAAAj+tKkAAAAk1BMVEX///8kqP97wN6N3P8fkt4FTv/2+/9mw/8Zqf+33PYAjuMglNwdh+YJUv7e9f+H3/9Hbf+Dx+Xc7/fl6/+V4v8AR/8hm+yH0/QARP93wuPH5v/T6//y9v8AQP/G5vS/4/Oz3fE9r/91lv/s8f9njP9fhf9Wf/+n1uxXvf+a0/gAle5Otf/h8f8Afuotk+92x/+Eof/CnBuTAAADLklEQVR4nM3a6VYTQRAF4IpOxsQFwZgYcRBIWAJuvP/T2R4EssxSXV3LrReY79zqOz0/hmhovp+84s2X19L5eDSo6BV+tRYWAu2FpUBzYTGQzm2F5UDjpigAbTPUAJoKVYCWQh2goVAJaNcULaBZhmpAOrfJUA9odKcoAunCQqgJNMlQFWiRoS7QoMvKQH2hNlB9y+pA7aboA5UzNADqnkMLoKrQBKi5ZRugYlOMgHoZWgHVhGZALaEdkC+MAuq8bSyBKls2BdYKQlOgxpaNgXRb2hRrYPE5NAeWCu2BhU2xBxZm6AGsS5riASzK0AfIf9scCJ2A/KYEAeVbdgNKm+IGlGYoBdaCuT1hzuftkQFPN28Ec/eJOUdbU4uA0/tJ/owmU9HDRMC3i5FgLk/9gJVIOPLKMAGxhf+AVTURAC99hI9AUYY+TXkEyoQuTfkPFJ5DB+ETEFb4DKwWmE15AQqbYp3hFlCYobFwGwh5DneAiFveBQJueQ+Il+E+EC7DAyBaUw6BYPdyCxBry21AqKa0AmUZ/jARtgOFTfnmB8RpShcQpimdQJQMu4EgTekBYjSlDyjcsq6wF4jQlH4gQIYDQGFTFIVDwPAMB4HRwmFg8JYZwNgMOcDQDFlAYYY//YCBW2YChXeKgpALDMuQDYxqCh8YlGEGUJhhYZdzgCHCLGDElvOAAU3JBPrfKblA93OYDfQW5gOdmzKt3mXPQvATwWgjFE5/vc+f34I/MTZ/ZD9V0Gr8IXfGxzPJzywyH61Xy3HuHM+EDxNN/TDHBlKTnaEzkJqHM2wg1au8LbsDc5viD8xsSgAwZZghjABmdTkESPUVO8MYIK2vuBkGAdPbBhzIbkoYkNuUOCA1rKYEAlNTGPdyJJB1L4cCU4aDwlgg48shGDjclGggzQaaEg4cupfjgSnDPiEAsP/LAQFIzXV3hhBAml13NgUDSHVnhiDA1JSOc4gC7GwKDJDW7VvGAXY0BQjY3hQkYMrwUAgFTOfwoClYwJamgAFpdnOGDaT6Zo4N3G8KHjAJl9jAdA7n2MCdpkACqXnJEBO4tWVQYBIusYHPGcICn4TqwL+G/6oa1KiEAQAAAABJRU5ErkJggg==" alt="">
+            </div>
+            <h3>99%</h3>
+        </div>
+
+        <div class="drag-skill dark" data-x="65" data-y="15">
+            <div class="drag-icon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAACUCAMAAACp1UvlAAAAn1BMVEUAHjYxqP////8AHDMyq/8BIDkwp/szrf8AABQAAAAzr/8ojNUAAAokgcQAHzYAGC4AGTMAECU1s/8mh8oAACYAACMWTnv3+PkADSwACx8AABqGi5NdZXIrO04SKUDBxcqmq7GeoacSIDgAAB52fYfY294qM0bm6Oq5u74hdbMbY5pJS1cYWo0smuYNNlhBRFM0OkgPQWgKLUtscnsebabznepHAAAGG0lEQVR4nO2caXObMBCGcRCIM7KwTUziJHZqx4EgGij//7dVgA8Q4CNc+sA7007HU4cnu6vVaoEVHsra775eVq9vQvd6e129fO32FQxC6ZP37d/583w57QFLEKZLeq2//96vce03C4UiPfYClemRwimLzf4S1/pn0Y+dWE0Xn+tart2nMgxVSqZ87qq5Nh/LwagSLT82FVxPW2M4Y2WaGtunEtdqMTBVosWK4Xpa/elzDdbp8c/qqcC1XfCARcEW2zzXRh0a6CR1c+bafQwd8mdNP3Ynrs9hE0RRy88j11oZmqUgZZ1x7X/48WKi6c8+5VrzkLnyWqxTrjlf5qIGmydc78bQHCUZ75Rry9NizLTcPgj7b97cSB35vRd286EpKjTfCV/PfOyMeT0+fwkvXNrrRVjxF/Y08FfCK39hTwP/Vejj+Hq/+KQaNWrUqFEDSUyEUuGjEBKHZXJSCEmKgiAIQ9v2U9lhJDmqgoeiEwUZQs06STuK/nsizzw7wmgQLkkGkzoBCGVihiru32iUqxbrwGbJnoS540rRiK32bLJbuCiZpkf9muw2rskEkqBXsFu5JgDYDo9cEyCHPVrsdi4KFvWXyu7gmkC9P0/ewzWBXm+eZLhAbkeCpY0AEKmvNFbkArojSRLdxpEU+KYuQwZMi/vyJMul0oqHbua07MGKFJqMzQDpq75gufJdTxEZkc6A2ZVLEmFHURz6h/7VTv1xiSu5oKQXfAnc0lVFbKiBH5v6bKbPzJhWRoaqNDbrFS5qM5K3WCnyEQ5iXaNlGwSJaC1HKzfZ9IOGtdE1LgH7BU/KUf56ohKZslZetxASt9nSvcrFGEwLc45EkquxS/ZKJLbGJTy7+Utr9jm14ojUUVHDds2FbS3Pdc5gKJzUl+Ddc6GwYC/3yIWiCyeDPriCSi5RuODEAex19COOL2L1wFWMr0NJIQZX6pDOuRyvwHVYj06sFTnSrArOEdc9l16Vv3Ah6IFMdNM0dZ0QenwHfXAhxmFZvkdh4WvEjpBDt2wxCmzPlC2tey6sF/dHIeXCHsh/eGr+pPWREbgEwk65RLW47KCZXc3Jf6y5zBMHyIniWdDh/oglsxjewM/CHuc3J+iWd1WsdFRPPFKPqGGx+kqOamKZa0Kk1g9wpTraOQhHYUwsZqc5eazIBUjgtFxfM1zEy0TLT1JVWB2rLybbQxI77ZKx57RDtxCWD2nJ5eNjkYNC1pJyHDgtevOec22uiBan7NcAJGbQXmfxrv5EcDaI4mql/5B0Ftsy2h1c0M91AVBQ5WhqNPetYYa4kwsAv5A96+ocDbpBC4fyW7kA8Is9ExHX1YWQ+EZjZ97IBfWSEUSptmC1SOMW3k1cUHMrMjoKSDn2D1+QmzY9r3MlCUCqTJpINMup9/Aly25msctcgB7riVe7ySDklVpRR+WTSnMukOZ6mKZ8mRahri1dzJUYuTVkDVtS7L7te3Eqz0tuqSF8LYGLOJxZlWSa3yTEilzQVDHOyonkBuRNvzAyJFqeVsRZo6Yny/WbZ11peerrVmltNqrw2+BKvKkGpsyQaXGDJdkOl5AYLWC2cmjywEV/lBEyvcUGgf9bLqdqoWIbDsyFYk/C5ScqVQKG5RJnGvEVh02dRa4mt5N+zQWAJrt2lG/Xi0rBj0PEPeVKdk+ZmH6kqobiOM+K6sSFZorW5C5XE67EV0CzNKKbrmvOZCa1ymH/efXIlcHBVMxWBMht+1h3XNWy/CYVWGdckLRYf7XI1Si6uuOyGt5y7ogLxg1fDuqECzSL+QZcKK69kUbTRvmw+QsukN3RTGXdbC8pqVAre1EW8dpoHyLXzOn20hepU08ncpJTs7sJyc3aNh9jS+6Wn3TPLyo6ThTaaWcxFZm5fhi12Zz7tUSEsGMkG7eiqiqtewZ+iHPUqFGjRo0aNWp48fkG5Bu377Hy+t4vr+9J8/peOa/v4fM6t4DXOQ/czsXgdY4It3NXeJ1Tw+tcH27nIHE7N4rXOVvcziXjdo4br3Pv+JgTqFbMCeR1ruIDt3MoHwad2/lTP7fzIZlzOjd6Gr161C1zThO9//vmby5sZjQO5uj+B5IVin4z2zT3AAAAAElFTkSuQmCC" alt="">
+            </div>
+            <h3>99%</h3>
+        </div>
+
+        <div class="drag-skill horizontal light" data-x="50" data-y="55">
+            <div class="drag-icon">
+                <img src="data:image/png;base64,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" alt="">
+            </div>
+            <h3>99%</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="testimonial-section">
+    <div class="testimonial-container">
+
+        <h2 class="testimonial-title">What Client Says</h2>
+
+        <div class="testimonial-slider">
+
+            <div class="testimonial-track">
+
+                <!-- Testimonial 1 -->
+                <div class="testimonial-item">
+                    <img src="https://template.bugfinder.app/raizen/assets/images/about/aboutVector1_1.png" alt="client">
+                    <p>
+                        “Working with us was an incredible experience from start to finish.
+                        The final result elevated our brand presence in ways we didn’t expect.
+                        A creative partner you can trust.”
+                    </p>
+                    <h3>Lena Hartmann</h3>
+                    <span>Creative Director</span>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-item">
+                    <img src="https://template.bugfinder.app/raizen/assets/images/about/aboutVector1_2.png" alt="client">
+                    <p>
+                        “Professional, fast, and solution-focused throughout the project.
+                        The design felt modern and intuitive for our users.”
+                    </p>
+                    <h3>Michael Ross</h3>
+                    <span>Marketing Head</span>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-item">
+                    <img src="https://template.bugfinder.app/raizen/assets/images/about/aboutVector1_3.png" alt="client">
+                    <p>
+                        “Attention to detail and creativity were outstanding.
+                        Communication was clear and execution was flawless.”
+                    </p>
+                    <h3>Sophia Lee</h3>
+                    <span>Founder</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<section class="social-section">
+    <div class="social-container">
+
+        <div class="social-card">
+            <div class="social-header">
+                <h2>Behance</h2>
+                <p>Project Case Studies</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://template.bugfinder.app/raizen/assets/images/social-media/socialMediaThumb1_1.png" alt="Behance Project">
+            </div>
+        </div>
+
+        <div class="social-card">
+            <div class="social-header">
+                <h2>Dribbble</h2>
+                <p>Inspired By Simplicity</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://template.bugfinder.app/raizen/assets/images/social-media/socialMediaThumb1_2.png" alt="Dribbble Project">
+            </div>
+        </div>
+
+        <div class="social-card">
+            <div class="social-header">
+                <h2>LinkedIn</h2>
+                <p>Let's Create Together</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://template.bugfinder.app/raizen/assets/images/social-media/socialMediaThumb1_3.png" alt="LinkedIn Project">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="talk-section">
+
+    <div class="talk-container">
+
+        <!-- LEFT CIRCLE -->
+        <div class="left-circle">
+            <div class="circle-content">
+                <p class="small-text">DISCOVER YOUR<br>PROJECT</p>
+                <h3>Call <span>↗</span> Raizen</h3>
+            </div>
+        </div>
+
+        <!-- CENTER TITLE -->
+        <div class="center-content">
+            <h1>Let’s Talk <span>With Me</span></h1>
+            <div class="lines"></div>
+        </div>
+
+        <!-- RIGHT FRAME -->
+  <!-- RIGHT FRAME -->
+<div class="right-frame">
+    <div class="frame-inner">
+        <img src="https://template.bugfinder.app/raizen/assets/images/intro/introthumb1_1.png" alt="Your Image">
+    </div>
+</div>
+
+    </div>
+
+    <!-- BIG BACKGROUND TEXT -->
+    <div class="big-text">
+        Raizen<span>™</span>
+    </div>
+
+</section>
+
+
+<script>
+
+/* ================= MOUSE GRADIENT MOVE ================= */
+
+const bg = document.querySelector('.bg-gradient');
+
+document.addEventListener('mousemove', (e)=>{
+    let x = e.clientX / window.innerWidth * 100;
+    let y = e.clientY / window.innerHeight * 100;
+    bg.style.background = `radial-gradient(circle at ${x}% ${y}%, #ff4d00, #d50063 60%)`;
+});
+
+/* ================= CUSTOM CURSOR ================= */
+
+const cursor = document.querySelector('.cursor');
+const follower = document.querySelector('.cursor-follower');
+
+document.addEventListener('mousemove', (e)=>{
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+
+    follower.style.left = e.clientX + 'px';
+    follower.style.top = e.clientY + 'px';
+});
+
+
+
+
+
+
+window.addEventListener("scroll", function() {
+    const header = document.querySelector("header");
+
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+const toggle = document.querySelector(".menu-toggle");
+const mobileMenu = document.querySelector(".mobile-menu");
+
+toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+});
+
+// Reset when resizing to desktop
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+        mobileMenu.classList.remove("active");
+        toggle.classList.remove("active");
+    }
+});
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const slides = document.querySelectorAll(".slide");
+const track = document.querySelector(".slider-track");
+const nextBtn = document.querySelector(".next-btn");
+const prevBtn = document.querySelector(".prev-btn");
+
+let index = 0;
+
+function updateSlider(){
+
+    slides.forEach((slide,i)=>{
+        slide.classList.toggle("active", i === index);
+    });
+
+    const slideWidth = slides[0].offsetWidth;
+    const gap = 40; // margin left + right (20px + 20px)
+    const moveAmount = (slideWidth + gap) * index;
+
+    track.style.transform = `translateX(calc(50% - ${moveAmount + slideWidth/2}px))`;
+}
+
+function nextSlide(){
+    index = (index + 1) % slides.length;
+    updateSlider();
+}
+
+function prevSlide(){
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlider();
+}
+
+nextBtn.addEventListener("click", nextSlide);
+prevBtn.addEventListener("click", prevSlide);
+
+setInterval(nextSlide, 4000);
+
+updateSlider();
+
+});
+
+
+
+
+
+
+
+
+
+window.addEventListener("scroll", function () {
+
+    const frame = document.querySelector(".about-image-frame");
+    const image = document.querySelector(".about-parallax-img");
+
+    const rect = frame.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight && rect.bottom > 0) {
+
+        // More powerful movement
+        let scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
+
+        // Increase strength (change 150 if you want more)
+        let move = (scrollProgress - 0.5) * 500;
+
+        image.style.transform = `translateY(${move}px)`;
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
+const container = document.getElementById("dragArea");
+const cards = document.querySelectorAll(".drag-skill");
+
+cards.forEach(card => {
+
+    // Set initial position using %
+    const startX = card.dataset.x;
+    const startY = card.dataset.y;
+
+    card.style.left = startX + "%";
+    card.style.top = startY + "%";
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    const startDrag = (e) => {
+        isDragging = true;
+        const rect = card.getBoundingClientRect();
+
+        offsetX = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+        offsetY = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+
+        card.style.zIndex = 10;
+    };
+
+    const onDrag = (e) => {
+        if (!isDragging) return;
+
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+        const containerRect = container.getBoundingClientRect();
+
+        let x = clientX - containerRect.left - offsetX;
+        let y = clientY - containerRect.top - offsetY;
+
+        // boundaries
+        x = Math.max(0, Math.min(x, container.clientWidth - card.offsetWidth));
+        y = Math.max(0, Math.min(y, container.clientHeight - card.offsetHeight));
+
+        // convert to %
+        card.style.left = (x / container.clientWidth) * 100 + "%";
+        card.style.top = (y / container.clientHeight) * 100 + "%";
+    };
+
+    const stopDrag = () => {
+        isDragging = false;
+    };
+
+    card.addEventListener("mousedown", startDrag);
+    card.addEventListener("touchstart", startDrag);
+
+    document.addEventListener("mousemove", onDrag);
+    document.addEventListener("touchmove", onDrag);
+
+    document.addEventListener("mouseup", stopDrag);
+    document.addEventListener("touchend", stopDrag);
+
+});
+</script>
+
+</body>
+</html>
